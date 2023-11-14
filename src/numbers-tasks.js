@@ -258,8 +258,17 @@ function getCube(num) {
  *   3  => 2
  *   10 => 55
  */
-function getFibonacciNumber(/* index */) {
-  throw new Error('Not implemented');
+function getFibonacciNumber(index) {
+  if (index === 0) return 0;
+  let prevValue = 1;
+  let nextValue = 1;
+  let sum = 0;
+  for (let i = 3; i <= index; i += 1) {
+    sum = prevValue + nextValue;
+    prevValue = nextValue;
+    nextValue = sum;
+  }
+  return nextValue;
 }
 
 /**
@@ -556,7 +565,7 @@ function getIntegerPartNumber(number) {
  * 0.1, 0.2, 0.3 => 0.6
  */
 function getSumOfNumbers(x1, x2, x3) {
-  return x1 + x2 + x3;
+  return (x1 + x2 + x3).toFixed(1);
 }
 
 /**
@@ -588,9 +597,8 @@ function getMaxNumber(firstNumber, secondNumber) {
  * -1, 1 => -1 | 0 | 1
  */
 function getRandomInteger(min, max) {
-  return Math.random() * (max - min) + min;
+  return Math.round(Math.random() * (max - min) + min);
 }
-
 /**
  * Returns the length of the hypotenuse of a right triangle.
  *
